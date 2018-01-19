@@ -1,13 +1,55 @@
 main{
     font-family: "Overpass Mono";
     font-size: 26px;
-    color: #ff8040;
     min-width: 600px;
     max-width: 800px;
     width: 80%;
     padding: 20px;
     margin: 0 auto;
+    min-height: 440px;
+    text-align: left;
+    user-select: none;
 }
 body{
     background-color: black;
+    text-align: center;
+}
+.power{
+    color: #ffe040;
+}
+.outta-power{
+    color: #ffec8d;
+}
+.bracket{
+    color: #959595;
+    font-size: 18px;
+}
+div{
+    background-color: #ff8040;
+    padding: 9px;
+    display: inline-block;
+    height: 49px;
+    border-radius: 20px;
+    transition: 50ms;
+    user-select: none;
+}
+div span{
+    font-size:40px;
+    font-family: "Overpass Mono";
+    font-weight: bold;
+    position: relative;
+    top: -5px;
+
+}
+div img{
+    height: 40px;
+    padding-right: 7.5px;
+}
+div:hover{
+    border: 2px solid white;
+    color: white;
+    background-color: black;
+}
+div:hover img{
+    filter: invert(1);
 }

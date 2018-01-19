@@ -5,7 +5,10 @@ var question = "This countryʹs city of Valledupar [VYE-ay-doo-PAR] is the origi
     "American country in which the Marxist group FARC [fark] operated.";
 
 $(document).ready(function(){
-    console.log(process(cut(question)));
+    display(process(cut(question)));
+    $("div").click(function(){
+        $("span").stop(true,false);
+    });
 });
 
 function cut(string){
@@ -35,11 +38,23 @@ function process(array){
         if(array[i].substr(0,1)=="[" || array[i].substr(array[i].length-1,1)=="]"){
             starttag+= " bracket";
         }
-        starttag+="'>";
-        // if(/*current is a (*) */){
-        //
-        // }
+        starttag+="' id='wd"+(i+1)+"'>";
+        if(array[i] == "(*)"){
+            bonus = false;
+        }
         theNewArray.push(starttag+array[i]+"</span>");
     }
     return theNewArray;
+}
+
+function display(array){
+    var theStr = "";
+    for(var i=0; i<array.length; i++){
+        theStr+=array[i]+" ";
+    }
+    $("main").append(theStr);
+    $("main span").toggle();
+    for(var i=0; i<array.length; i++){
+        $("main span:nth-child("+(i+1)+")").delay(i*400).fadeIn(300);
+    }
 }
