@@ -6,10 +6,6 @@ var question = "This countryʹs city of Valledupar [VYE-ay-doo-PAR] is the origi
 
 $(document).ready(function(){
     display(process(cut(question)));
-    $(".button").click(function(){
-        $("span").stop(true,false);
-        $(this).off('click').empty().append("<input type='text'/>").addClass("input-box").removeClass("button");
-    });
 });
 
 function cut(string){
@@ -50,6 +46,7 @@ function process(array){
 
 function display(array){
     var theStr = "";
+    var duration = array.length*400 + 5000;
     for(var i=0; i<array.length; i++){
         theStr+=array[i]+" ";
     }
@@ -58,4 +55,9 @@ function display(array){
     for(var i=0; i<array.length; i++){
         $("main span:nth-child("+(i+1)+")").delay(i*400).fadeIn(300);
     }
+    $("body").append("<div class='button' id=\"stopbutton\"><img src=\"https://image.flaticon.com/icons/png/512/87/87810.png\"><span>BUZZ</span></div>");
+    $(".button").click(function() {
+        $("span").stop(true, false);
+        $(this).off('click').empty().append("<input type='text'/>").addClass("input-box").removeClass("button");
+    });
 }
