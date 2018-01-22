@@ -6,8 +6,9 @@ var question = "This countryʹs city of Valledupar [VYE-ay-doo-PAR] is the origi
 
 $(document).ready(function(){
     display(process(cut(question)));
-    $("div").click(function(){
+    $(".button").click(function(){
         $("span").stop(true,false);
+        $(this).off('click').empty().append("<input type='text'/>").addClass("input-box").removeClass("button");
     });
 });
 

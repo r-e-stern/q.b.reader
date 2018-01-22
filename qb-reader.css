@@ -24,7 +24,7 @@ body{
     color: #959595;
     font-size: 18px;
 }
-div{
+.button{
     background-color: #ff8040;
     padding: 9px;
     display: inline-block;
@@ -33,7 +33,7 @@ div{
     transition: 50ms;
     user-select: none;
 }
-div span{
+.button span{
     font-size:40px;
     font-family: "Overpass Mono";
     font-weight: bold;
@@ -41,15 +41,38 @@ div span{
     top: -5px;
 
 }
-div img{
+.button img{
     height: 40px;
     padding-right: 7.5px;
 }
-div:hover{
+.button:hover{
     border: 2px solid white;
     color: white;
     background-color: black;
 }
-div:hover img{
+.button:hover img{
     filter: invert(1);
+}
+div{
+    transition: 300ms;
+}
+.input-box{
+    display: inline-block;
+    border-radius: 9px;
+    border: 2.5px solid white;
+}
+.input-box input{
+    width: 500px;
+    border: none;
+    padding: 9px;
+    border-radius: 9px;
+    font-size: 35px;
+    background-color: transparent;
+    color: white;
+    font-family: "Overpass Mono";
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    outline: none;
 }
