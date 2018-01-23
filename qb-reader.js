@@ -1,11 +1,22 @@
-var question = "This countryʹs city of Valledupar [VYE-ay-doo-PAR] is the origin of the vallenato [vye-ay-NAH-toh] " +
-    "style of folk music. The letter ʹCʹ in the CIVETS [SIH-vuts] bloc of emerging markets refers to this country. " +
-    "In 2002 the politician Ingrid Betancourt [EENG-greed bet-tahn-KOR] was kidnapped in this country by a (*) " +
-    "guerrilla group that signed a peace deal with president Juan Manuel Santos. For 10 points—name this South " +
-    "American country in which the Marxist group FARC [fark] operated.";
+function Question(q,a){
+    this.questionText = q;
+    this.answer = a;
+}
+
+function Tossup(q,a,b) {
+    Question.call(this, q, a);
+    this.bonus = b;
+}
+
+function Bonus(p,q0,a0,q1,a1,q2,a2){
+    this.prelude = p;
+    this.partOne = new Question(q0,a0);
+    this.partTwo = new Question(q1,a1);
+    this.partThree = new Question(q2,a2);
+}
 
 $(document).ready(function(){
-    display(process(cut(question)));
+    display(process(cut(tossups[Math.floor(Math.random() * Math.floor(24))].questionText)));
 });
 
 function cut(string){
