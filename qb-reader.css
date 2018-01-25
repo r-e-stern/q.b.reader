@@ -9,6 +9,7 @@ main{
     min-height: 440px;
     text-align: left;
     user-select: none;
+    color: white;
 }
 body{
     background-color: black;

@@ -16,7 +16,11 @@ function Bonus(p,q0,a0,q1,a1,q2,a2){
 }
 
 $(document).ready(function(){
-    display(process(cut(tossups[Math.floor(Math.random() * Math.floor(24))].questionText)));
+    $(document).keyup(function(){
+        if(event.code == "Enter"){
+            $(".button").click();
+        }
+    });
 });
 
 function cut(string){

@@ -32,7 +32,7 @@ bonuses.push(new Bonus("For ten points each — name these officers who might ha
     "In an alternate timeline, this officer, promoted to captain, attempted to stop the crew of the Delta Flyer from changing history.",
     "Lt. Cmdr. Geordi LaForge (accept 'Captain LaForge' or variants)",
     "In the Next Generation finale, the USS Pasteur is captained by a hypothetical daughter of this couple.",
-    "Capt. Jean-Luc Picard and Dr. Beverly Crusher (prompt on 'Captain Beverly Crusher' but not 'Captain   Crusher')",
+    "Capt. Jean-Luc Picard and Dr. Beverly Crusher (prompt on 'Captain Beverly Crusher' but not 'Captain Crusher')",
     "In another hypothetical timeline, Lorian, a half-Vulcan, half-human, commands the Enterprise in the Delphic Expanse as it becomes this type of ship.",
     "generational starship"));
 bonuses.push(new Bonus("The Delphic Expanse was destroyed in 2154. For ten points each —",
