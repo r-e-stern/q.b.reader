@@ -1,3 +1,7 @@
+var POINTS = 0;
+var ON_TOSSUP = 0;
+var WRONG = [];
+
 function Question(q,a,s){
     this.questionText = q;
     this.answer = a;
@@ -34,11 +38,16 @@ function Episode(t,s,n,e){
     Source.call(t,"episode");
 }
 
+
 $(document).ready(function(){
+    fillProgress();
     $(document).keyup(function(){
         if(event.code == "Enter"){
             $(".button").click();
         }
+    });
+    $("nav").click(function(){
+        tossup();
     });
 });
 
@@ -93,5 +102,24 @@ function display(array){
     $(".button").click(function() {
         $("span").stop(true, false);
         $(this).off('click').empty().append("<input type='text'/>").addClass("input-box").removeClass("button");
+        setTimeout(function(){console.log("Time expired");},10000);
     });
+}
+
+function tossup(){
+    $("main").empty().append("<span class='countdown'>3</span>");
+    setTimeout(function(){$("main").empty().append("<span class='countdown'>2</span>");},1000);
+    setTimeout(function(){$("main").empty().append("<span class='countdown'>1</span>");},2000);
+    setTimeout(function(){
+        $("main").empty();
+        display(process(cut(tossups[ON_TOSSUP].questionText)));
+        },3000);
+}
+
+function fillProgress(){
+    for(var i=0; i<tossups.length; i++){
+        $("#progress").append("<span id='prog"+(i+1)+"'>"+(i+1)+"</span>");
+    }
+    var pct = 86/tossups.length + "%";
+    $("#progress span:not(span:first-of-type)").css('width',pct);
 }

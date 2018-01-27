@@ -1,3 +1,6 @@
+header{
+    user-select: none;
+}
 main{
     font-family: "Overpass Mono";
     font-size: 26px;
@@ -25,14 +28,29 @@ body{
     color: #959595;
     font-size: 18px;
 }
-.button{
+.button, nav{
     background-color: #ff8040;
     padding: 9px;
     display: inline-block;
-    height: 49px;
     border-radius: 20px;
     transition: 50ms;
     user-select: none;
+    border: 2px solid black;
+}
+.button{
+    height: 43px;
+}
+.countdown{
+    color: #777777;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    font-size: 100px;
+}
+nav{
+    padding-bottom: 6px;
+    font-weight: bold;
+    color: black;
 }
 .button span{
     font-size:40px;
@@ -46,7 +64,7 @@ body{
     height: 40px;
     padding-right: 7.5px;
 }
-.button:hover{
+.button:hover, nav:hover{
     border: 2px solid white;
     color: white;
     background-color: black;
@@ -76,4 +94,26 @@ div{
     text-transform: uppercase;
     text-align: center;
     outline: none;
+}
+#progress span{
+    color: #777777;
+    display: inline-block;
+    font-family: "Overpass Mono";
+    font-size: 14px;
+    min-width: 20px;
+    padding-bottom: 1px;
+}
+#progress{
+    border-bottom: 1px solid #777777;
+}
+#pointct{
+    width: 12%;
+    border-right: 1px solid #777777;
+    text-align: left;
+}
+#pointct span{
+    margin: auto;
+    font-family: "Overpass Mono";
+    font-weight: bold;
+    color: gold;
 }
