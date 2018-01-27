@@ -77,14 +77,24 @@ div{
 }
 .input-box{
     display: inline-block;
-    border-radius: 9px;
-    border: 2.5px solid white;
+}
+.input-box span{
+    background-color: white;
+    display: block;
+    min-width: 50%;
+    max-width: 80%;
+    margin: auto;
+    font-family: "Overpass Mono";
+    font-weight: bold;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    user-select: none;
 }
 .input-box input{
     width: 500px;
-    border: none;
-    padding: 9px;
     border-radius: 9px;
+    border: 2.5px solid white;
+    padding: 9px;
     font-size: 35px;
     background-color: transparent;
     color: white;
@@ -94,6 +104,10 @@ div{
     text-transform: uppercase;
     text-align: center;
     outline: none;
+}
+.input-box i{
+    color: red;
+    font-style: normal;
 }
 #progress span{
     color: #777777;

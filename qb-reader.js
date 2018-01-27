@@ -1,6 +1,7 @@
 var POINTS = 0;
 var ON_TOSSUP = 0;
 var WRONG = [];
+var tossupTimeout;
 
 function Question(q,a,s){
     this.questionText = q;
@@ -102,7 +103,13 @@ function display(array){
     $(".button").click(function() {
         $("span").stop(true, false);
         $(this).off('click').empty().append("<input type='text'/>").addClass("input-box").removeClass("button");
-        setTimeout(function(){console.log("Time expired");},10000);
+        tossupTimeout = setTimeout(function(){checkTossupAns()},10000);
+        $(".input-box input").keyup(function(){
+            if(event.code == "Enter"){
+                checkTossupAns();
+                clearTimeout(tossupTimeout);
+            }
+        });
     });
 }
 
@@ -122,4 +129,11 @@ function fillProgress(){
     }
     var pct = 86/tossups.length + "%";
     $("#progress span:not(span:first-of-type)").css('width',pct);
+}
+
+function checkTossupAns(){
+    $('.input-box input').prop('disabled',true);
+    $('.input-box').append("<span><i>ANSWER:</i> "+tossups[ON_TOSSUP].answer+"</span>");
+    $('.input-box span').toggle().slideDown(400);
+
 }
