@@ -1,6 +1,7 @@
-function Question(q,a){
+function Question(q,a,s){
     this.questionText = q;
     this.answer = a;
+    this.source =[];
 }
 
 function Tossup(q,a,b) {
@@ -13,6 +14,24 @@ function Bonus(p,q0,a0,q1,a1,q2,a2){
     this.partOne = new Question(q0,a0);
     this.partTwo = new Question(q1,a1);
     this.partThree = new Question(q2,a2);
+}
+
+function Source(n, c){
+    this.name=n;
+    this.category=c;
+}
+
+function Movie(t){
+    this.title = t;
+    Source.call(t,"movie");
+}
+
+function Episode(t,s,n,e){
+    this.series = s;
+    this.season= n;
+    this.episode = e;
+    this.title=t;
+    Source.call(t,"episode");
 }
 
 $(document).ready(function(){
