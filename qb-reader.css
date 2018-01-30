@@ -24,6 +24,10 @@ body{
 .outta-power{
     color: #ffec8d;
 }
+.bonus{
+    color: #ffec8d;
+    font-size: 23px;
+}
 .bracket{
     color: #959595;
     font-size: 18px;
@@ -60,6 +64,9 @@ nav{
     position: relative;
     top: -5px;
 
+}
+.bon span{
+    top: 0px;
 }
 .button img{
     height: 40px;

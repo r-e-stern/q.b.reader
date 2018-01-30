@@ -39,7 +39,6 @@ function Episode(t,s,n,e){
     Source.call(t,"episode");
 }
 
-
 $(document).ready(function(){
     fillProgress();
     $(document).keyup(function(){
@@ -65,16 +64,20 @@ function cut(string){
     return theArr;
 }
 
-function process(array){
+function process(array,bool){
     var theNewArray = [];
     var bonus = true;
     var starttag;
     for(var i=0; i<array.length; i++){
         starttag="<span ";
-        if(bonus){
-            starttag += "class='power";
+        if(!bool){
+            if(bonus){
+                starttag += "class='power";
+            }else{
+                starttag += "class='outta-power";
+            }
         }else{
-            starttag += "class='outta-power";
+            starttag += "class='bonus";
         }
         if(array[i].substr(0,1)=="[" || array[i].substr(array[i].length-1,1)=="]"){
             starttag+= " bracket";
@@ -114,6 +117,33 @@ function display(array){
     });
 }
 
+function displayBonus(array,rd){
+    var prev = $("main span").length;
+    var theStr = "";
+    var duration = array.length*400 + 5000;
+    for(var i=0; i<array.length; i++){
+        theStr+=array[i]+" ";
+    }
+    $("main").append(theStr);
+    for(var i=0; i<array.length; i++){
+        $("main span:nth-child("+(prev+i+1)+")").toggle().delay(i*400).fadeIn(300);
+    }
+    $(".button").remove();
+    $("body").append("<div class='button bon' id=\"stopbutton\">"
+        +"<span>ANSWER</span></div>");
+    $(".button").click(function() {
+        $("span").stop(true, true);
+        $(this).off('click').empty().append("<input type='text'/>").addClass("input-box").removeClass("button");
+        tossupTimeout = setTimeout(function(){checkBonusAns()},10000);
+        $(".input-box input").keyup(function(){
+            if(event.code == "Enter"){
+                checkBonusAns(rd);
+                clearTimeout(tossupTimeout);
+            }
+        });
+    });
+}
+
 function tossup(){
     $(".input-box").remove();
     $("main").empty().append("<span class='countdown'>3</span>");
@@ -121,7 +151,7 @@ function tossup(){
     setTimeout(function(){$("main").empty().append("<span class='countdown'>1</span>");},2000);
     setTimeout(function(){
         $("main").empty();
-        display(process(cut(tossups[ON_TOSSUP].questionText)));
+        display(process(cut(tossups[ON_TOSSUP].questionText),false));
         },3000);
 }
 
@@ -148,7 +178,7 @@ function checkTossupAns(){
             }
             $("#pointct span").html(parseInt(POINTS));
             $("#progress span:nth-child("+(ON_TOSSUP+2)+")").addClass("correct");
-            bonus();
+            bonus(1);
         }else{
             if(isPower()!="finished"){
                 POINTS-=5;
@@ -180,4 +210,20 @@ function isPower(){
     }else{
         return "false";
     }
+}
+
+function bonus(part){
+    $(".input-box").remove();
+    if(part==1){
+        $("main").empty().append("<span class='countdown'>2</span>");
+        setTimeout(function(){$("main").empty().append("<span class='countdown'>1</span>");},1000);
+        setTimeout(function(){
+            $("main").empty();
+            displayBonus(process(cut(tossups[ON_TOSSUP].bonus.prelude+"<br/><br/>A. "+tossups[ON_TOSSUP].bonus.partOne.questionText),true),1);
+        },2000);
+    }
+}
+
+function checkBonusAns(part){
+
 }
