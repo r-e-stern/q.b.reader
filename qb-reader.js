@@ -99,7 +99,8 @@ function display(array){
     for(var i=0; i<array.length; i++){
         $("main span:nth-child("+(i+1)+")").delay(i*400).fadeIn(300);
     }
-    $("body").append("<div class='button' id=\"stopbutton\"><img src=\"https://image.flaticon.com/icons/png/512/87/87810.png\"><span>BUZZ</span></div>");
+    $("body").append("<div class='button' id=\"stopbutton\">"
+        +"<img src=\"https://image.flaticon.com/icons/png/512/87/87810.png\"><span>BUZZ</span></div>");
     $(".button").click(function() {
         $("span").stop(true, false);
         $(this).off('click').empty().append("<input type='text'/>").addClass("input-box").removeClass("button");
@@ -114,6 +115,7 @@ function display(array){
 }
 
 function tossup(){
+    $(".input-box").remove();
     $("main").empty().append("<span class='countdown'>3</span>");
     setTimeout(function(){$("main").empty().append("<span class='countdown'>2</span>");},1000);
     setTimeout(function(){$("main").empty().append("<span class='countdown'>1</span>");},2000);
@@ -133,7 +135,49 @@ function fillProgress(){
 
 function checkTossupAns(){
     $('.input-box input').prop('disabled',true);
-    $('.input-box').append("<span><i>ANSWER:</i> "+tossups[ON_TOSSUP].answer+"</span>");
+    $('.input-box').append("<span><i>ANSWER:</i> "+tossups[ON_TOSSUP].answer+"</span>"
+        +"<div id='wright' data-truth='true'>I was<br/>correct.</div>"
+        +"<div id='wrong' data-truth='false'>I was<br/>incorrect.</div>");
     $('.input-box span').toggle().slideDown(400);
+    $('.input-box div').toggle().delay(500).slideDown(400).click(function(){
+        if($(this).attr("data-truth")=="true"){
+            if(isPower()=="true"){
+                POINTS+=15;
+            }else{
+                POINTS+=10;
+            }
+            $("#pointct span").html(parseInt(POINTS));
+            $("#progress span:nth-child("+(ON_TOSSUP+2)+")").addClass("correct");
+            bonus();
+        }else{
+            if(isPower()!="finished"){
+                POINTS-=5;
+            }
+            $("#pointct span").html(parseInt(POINTS));
+            $("#progress span:nth-child("+(ON_TOSSUP+2)+")").addClass("incorrect");
+            for(var i=0; i<tossups[ON_TOSSUP].source.length; i++){
+                WRONG.push(tossups[ON_TOSSUP].source[i]);
+            }
+            ON_TOSSUP++;
+            tossup();
+        }
+    });
+}
 
+function isPower(){
+    var lastDisplayed;
+    for(var i=0; i<$("main span").length; i++){
+        if($("main span:nth-child("+(i+1)+")").attr("style")!=""){
+            lastDisplayed=i;
+            break;
+        }
+        if(i==$("main span").length-1){
+            return "finished";
+        }
+    }
+    if($("main span:nth-child("+lastDisplayed+")").attr("class").substr(0,1)=="p"){
+        return "true";
+    }else{
+        return "false";
+    }
 }

@@ -28,7 +28,8 @@ body{
     color: #959595;
     font-size: 18px;
 }
-.button, nav{
+.button,
+nav{
     background-color: #ff8040;
     padding: 9px;
     display: inline-block;
@@ -82,6 +83,8 @@ div{
     background-color: white;
     display: block;
     min-width: 50%;
+    padding-left: 5px;
+    padding-right: 5px;
     max-width: 80%;
     margin: auto;
     font-family: "Overpass Mono";
@@ -130,4 +133,46 @@ div{
     font-family: "Overpass Mono";
     font-weight: bold;
     color: gold;
+}
+.input-box div{
+    width: 24%;
+    display: inline-block;
+    padding: .5%;
+    margin-top: 7px;
+    border-radius: 4.5px;
+    font-family: "Overpass Mono";
+    padding-bottom: 0px;
+    border: 2px solid black;
+    user-select: none;
+}
+#wright{
+    margin-left: 20%;
+    margin-right:4%;
+    color: green;
+    border-color: green;
+}
+#wrong{
+    margin-left: 4%;
+    margin-right:20%;
+    color: red;
+    border-color: red;
+}
+.input-box #wrong:hover,
+.input-box #wright:hover{
+    color: black;
+    font-weight: bold;
+}
+#wrong:hover{
+    background-color: red;
+}
+#wright:hover{
+    background-color: green;
+}
+#progress span.correct{
+    color: green;
+    font-weight: bold;
+}
+#progress span.incorrect{
+    color: red;
+    font-weight: bold;
 }
