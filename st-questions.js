@@ -87,7 +87,7 @@ bonuses.push(new Bonus("In 2370, the Federation-Cardassian Treaty was signed. Fo
 bonuses.push(new Bonus("This document was ratified in 2161 and signed by Jonathan Archer. For ten points each —",
     "Name this founding document of a major Alpha Quadrant power.",
     "the Charter of the United Federation of Planets",
-    "This group takes its name from an article in the Federation Charter providing for extraordinary measures to be taken in times of extreme threat.",
+    "This group takes its name from a passage in the Starfleet Charter providing for extraordinary measures to be taken in times of extreme threat.",
     "Section 31",
     "Section 31 attempted to cure this affliction in the 22nd century for less-than-noble reasons.",
     "the Klingon augment virus (accept variants)"));
@@ -101,7 +101,7 @@ bonuses.push(new Bonus("Millions of species have evolved on Earth. For ten point
 bonuses.push(new Bonus("An endling is the last surviving member of its species. For ten points each —",
     "Kamin could be considered an endling of this long-dead village known for its flautists.",
     "Ressik, Kataan",
-    "Ressik was destroyed as a result of one of these natural disasters, one of which happened in the Hobus sector in the 24th century.",
+    "Ressik was destroyed as a result of one of these natural disasters, one of which happened near Romulus in the 24th century.",
     "supernova(e)",
     "Supernovae leave behind these remnants, of which artificial ones can be used to power warbirds.",
     "singulariti(es) (accept 'black holes')"));
@@ -128,7 +128,7 @@ bonuses.push(new Bonus("The Borg have the capacity to assimilate humans. For ten
     "The West Wing"));
 bonuses.push(new Bonus("For ten points each — name these recreational activities:",
     "William Riker would often practice this martial art with his father, only to later discover he had been cheated.",
-    "Anbo-jytsu",
+    "Anbo-jyutsu",
     "Jonathan Archer had a fondness for watching California universities compete at this Earth sport.",
     "water polo",
     "Data defeated a third-level grand-master at Stratagema [strat-uh-GEM-uh] by abandoning this common strategy.",
@@ -170,13 +170,13 @@ bonuses.push(new Bonus("He’s a doctor, damn it, not a nightlight. For ten poin
     "Photons Be Free"));
 tossups.push(new Tossup("One of these objects was owned by a relative of an inhabitant of Deep Space Nine. Another of these objects was the site of the tragic death of Cadet Joshua Albert during a training exercise. In a memorable episode titled for these objects, Nog (*) learns to cope with his PTSD. The Aenar [EE-nar] are native to one of these cosmological objects, of which 181 are in the Sol system. For ten points — name these planet-like bodies such as Praxis and Luna.",
     "moon(s) (accept It’s Only A Paper Moon after 'Nog')",bonuses[0]));
-tossups.push(new Tossup("Though ambidextrous, this individual preferred using his left hand for tasks including painting and writing. This individual was, by most counts, forty-one years of age at the time of his death. Aboard the Enterprise-D (*), he became close friends with Lt. Reginald Barclay, who, along with this man, was the only other officer known to be able to feed Spot. For ten points — name this android Starfleet lieutenant commander who left his head in San Francisco.",
+tossups.push(new Tossup("Though ambidextrous, this individual preferred using his left hand for tasks including painting and writing. This individual was, by most counts, forty-one years of age at the time of his death. Aboard the Enterprise-D, (*) he became close friends with Lt. Reginald Barclay, who, along with this man, was the only other officer known to be able to feed Spot. For ten points — name this android Starfleet lieutenant commander who left his head in San Francisco.",
     "Lt. Cmdr. Data [DAY-tuh]",bonuses[1]));
-tossups.push(new Tossup("Admiral William Ross is notable among Starfleet leadership for having no experience with this object.  Trader Kivas Fajo [KEE-vas FAH-jo] relinquished twelve crates of this object upon his capture. Upon consuming it in The Undiscovered (*) Country, Captain Kirk notes that it is ‘no longer to be used at diplomatic functions’.  When Worf consumed this, he noted that it should be illegal; it was legalized during the Dominion War. For ten points — name this blue translucent alcoholic beverage.",
+tossups.push(new Tossup("Admiral William Ross is notable among Starfleet leadership for having no experience with this object.  Trader Kivas Fajo [KEE-vas FAH-jo] relinquished twelve crates of this object upon his capture. Upon consuming it in The Undiscovered (*) Country, James Kirk notes that it is ‘no longer to be used at diplomatic functions’.  When Worf consumed this, he noted that it should be illegal; it was legalized during the Dominion War. For ten points — name this blue translucent alcoholic beverage.",
     "Romulan ale (do not accept or prompt on 'Kali-Fal')",bonuses[2]));
 tossups.push(new Tossup("At Starfleet Academy, this officer took American Sign Language but struggled with Klingon. Aboard the USS Al-Batani, this officer served under then-Captain Owen Paris, who was responsible for the attempted (*) rescue of this officer’s ship through the Pathfinder Project in 2378. Born in Bloomington, Indiana, she enjoyed drinking coffee and attributed her victory over the Borg to it. The starship Voyager was commanded in the Delta Quadrant by — for ten points, which first female lead of a Star Trek series?",
     "Adm. Kathryn Janeway",bonuses[3]));
-tossups.push(new Tossup("Dathon invoked one of these entities in his encounter with Captain Picard at El-Adrel to convey silence; after attempting to unionize coal miners, Sean O’Brien was cast into one of them. A red one of these geographic features (*) lies at the entrance to Sto-Vo-Kor to be navigated by those with honor. Wesley Crusher first met Data at a simulation of one of these features. Deep Space Nine’s runabouts were named after these objects, which — for ten points — on Earth include the Yangtse Kiang [yang-TSEE KEE-ang] and Orinoco.",
+tossups.push(new Tossup("Dathon invoked one of these entities in his encounter with Captain Picard at El-Adrel to convey silence; after attempting to unionize coal miners, Sean O’Brien was cast into one of them. A red one of these geographic features (*) lies at the entrance to Gre'thor to be navigated by those without honor. Wesley Crusher first met Data at a simulation of one of these features. Deep Space Nine’s runabouts were named after these objects, which — for ten points — on Earth include the Yangtse Kiang [yang-TSEE KEE-ang] and Orinoco.",
     "river(s)",bonuses[4]));
 tossups.push(new Tossup("This individual died due to radiation sickness in the early stages of his civilization. That death, in a vast desert, was caused by his species’ reliance on atomic weaponry in the midst of a conflict with rebels. The rebels, who were said to 'march (*) beneath the Raptor’s wings', were eventually defeated as this man’s teachings led to a Time of Awakening and Reform under the Kir’Shara [KEER SHA-ra]. For ten points — name this father of Vulcan philosphy whose enlightenment on Mount Seleya is symbolized by the IDIC.",
     "Surak of Vulcan",bonuses[5]));

@@ -2,6 +2,7 @@ var POINTS = 0;
 var ON_TOSSUP = 0;
 var WRONG = [];
 var tossupTimeout;
+var buzzTimeout;
 
 function Question(q,a,s){
     this.questionText = q;
@@ -93,10 +94,19 @@ function process(array,bool){
 
 function display(array){
     var theStr = "";
-    var duration = array.length*400 + 5000;
+    var duration = array.length*400 + 7500;
     for(var i=0; i<array.length; i++){
         theStr+=array[i]+" ";
     }
+    buzzTimeout= setTimeout(function(){
+        $("#progress span:nth-child("+(ON_TOSSUP+2)+")").addClass("incorrect");
+        for(var i=0; i<tossups[ON_TOSSUP].source.length; i++){
+            WRONG.push(tossups[ON_TOSSUP].source[i]);
+        }
+        $(".button").remove();
+        ON_TOSSUP++;
+        tossup();
+    },duration);
     $("main").append(theStr);
     $("main span").toggle();
     for(var i=0; i<array.length; i++){
@@ -105,9 +115,15 @@ function display(array){
     $("body").append("<div class='button' id=\"stopbutton\">"
         +"<img src=\"https://image.flaticon.com/icons/png/512/87/87810.png\"><span>BUZZ</span></div>");
     $(".button").click(function() {
+        clearTimeout(buzzTimeout);
         $("span").stop(true, false);
         $(this).off('click').empty().append("<input type='text'/>").addClass("input-box").removeClass("button");
-        tossupTimeout = setTimeout(function(){checkTossupAns()},10000);
+        tossupTimeout = setTimeout(function(){
+            checkTossupAns();
+            if($(".input-box input").val()==""){
+                $("#wrong").click();
+            }
+        },10000);
         $(".input-box input").keyup(function(){
             if(event.code == "Enter"){
                 checkTossupAns();
@@ -120,21 +136,57 @@ function display(array){
 function displayBonus(array,rd){
     var prev = $("main span").length+((rd-1)*2);
     var theStr = "";
-    var duration = array.length*400 + 5000;
+    var duration = array.length*400 + 7500;
     for(var i=0; i<array.length; i++){
         theStr+=array[i]+" ";
     }
+    buzzTimeout = setTimeout(function(){
+        $(".button").remove();
+        var ans;
+        if(rd==1){
+            ans="<span class='ans'><i>ANSWER:</i> "+tossups[ON_TOSSUP].bonus.partOne.answer+"</span>";
+        }else if(rd==2){
+            ans="<span class='ans'><i>ANSWER:</i> "+tossups[ON_TOSSUP].bonus.partTwo.answer+"</span>";
+        }else{
+            ans="<span class='ans'><i>ANSWER:</i> "+tossups[ON_TOSSUP].bonus.partThree.answer+"</span>";
+        }
+        if(rd==1){
+            for(var i=0; i<tossups[ON_TOSSUP].bonus.partOne.source.length; i++){
+                WRONG.push(tossups[ON_TOSSUP].bonus.partOne.source[i]);
+            }
+        }else if(rd==2){
+            for(var i=0; i<tossups[ON_TOSSUP].bonus.partTwo.source.length; i++){
+                WRONG.push(tossups[ON_TOSSUP].bonus.partTwo.source[i]);
+            }
+        }else{
+            for(var i=0; i<tossups[ON_TOSSUP].bonus.partThree.source.length; i++){
+                WRONG.push(tossups[ON_TOSSUP].bonus.partThree.source[i]);
+            }
+        }
+        $("main").append(ans+"<br/><br/>");
+        if(rd<3){
+            bonus(rd+1);
+        }else{
+            ON_TOSSUP++;
+            tossup();
+        }
+    },duration);
     $("main").append(theStr);
     for(var i=0; i<array.length; i++){
         $("main span:nth-child("+(prev+i+1)+")").toggle().delay(i*400).fadeIn(300);
     }
-    $(".button").remove();
     $("body").append("<div class='button bon' id=\"stopbutton\">"
         +"<span>ANSWER</span></div>");
     $(".button").click(function() {
+        clearTimeout(buzzTimeout);
         $("span").finish();
         $(this).off('click').empty().append("<input type='text'/>").addClass("input-box").removeClass("button");
-        tossupTimeout = setTimeout(function(){checkBonusAns()},10000);
+        tossupTimeout = setTimeout(function(){
+            checkBonusAns();
+            if($(".input-box input").val()==""){
+                $("#wrong").click();
+            }
+        },10000);
         $(".input-box input").keyup(function(){
             if(event.code == "Enter"){
                 checkBonusAns(rd);
@@ -145,14 +197,18 @@ function displayBonus(array,rd){
 }
 
 function tossup(){
-    $(".input-box").remove();
-    $("main").empty().append("<span class='countdown'>3</span>");
-    setTimeout(function(){$("main").empty().append("<span class='countdown'>2</span>");},1000);
-    setTimeout(function(){$("main").empty().append("<span class='countdown'>1</span>");},2000);
-    setTimeout(function(){
-        $("main").empty();
-        display(process(cut(tossups[ON_TOSSUP].questionText),false));
+    if(ON_TOSSUP<24){
+        $(".input-box").remove();
+        $("main").empty().append("<span class='countdown'>3</span>");
+        setTimeout(function(){$("main").empty().append("<span class='countdown'>2</span>");},1000);
+        setTimeout(function(){$("main").empty().append("<span class='countdown'>1</span>");},2000);
+        setTimeout(function(){
+            $("main").empty();
+            display(process(cut(tossups[ON_TOSSUP].questionText),false));
         },3000);
+    }else{
+        displaySources();
+    }
 }
 
 function fillProgress(){
@@ -195,6 +251,7 @@ function checkBonusAns(part){
                 }
             }
         }
+        $(".button").remove();
         $("main").append(ans+"<br/><br/>");
         if(part<3){
             bonus(part+1);
