@@ -3,6 +3,10 @@ var ON_TOSSUP = 0;
 var WRONG = [];
 var tossupTimeout;
 var buzzTimeout;
+var SERIES_ORDER = ["TOS","TNG","DS9","VOY","ENT","DIS"];
+var MOVIE_ORDER = ["The Motion Picture", "The Wrath of Khan", "The Search for Spock", "The Voyage Home",
+                    "The Final Frontier", "The Undiscovered Country", "Generations", "First Contact", "Insurrection",
+                    "Nemesis", "Star Trek (2009)", "Into Darkness", "Beyond"];
 
 function Question(q,a,s){
     this.questionText = q;
@@ -29,11 +33,13 @@ function Source(n, c){
 
 function Movie(t){
     this.title = t;
+    this.type = "movie";
     Source.call(t,"movie");
 }
 
 function Episode(t,s,n,e){
     this.series = s;
+    this.type = "episode";
     this.season= n;
     this.episode = e;
     this.title=t;
@@ -327,4 +333,14 @@ function bonus(part){
     }
 }
 
+function displaySources(){
+    sort(WRONG);
+}
+
+function sort(array){
+    var temparray = array;
+    for(var i=0; i<array.length; i++){
+
+    }
+}
 
