@@ -1,8 +1,8 @@
-header{
+*{
+    font-family: "Overpass Mono";
     user-select: none;
 }
 main{
-    font-family: "Overpass Mono";
     font-size: 26px;
     min-width: 600px;
     max-width: 800px;
@@ -11,7 +11,6 @@ main{
     margin: 0 auto;
     min-height: 440px;
     text-align: left;
-    user-select: none;
     color: white;
 }
 body{
@@ -39,7 +38,6 @@ nav{
     display: inline-block;
     border-radius: 20px;
     transition: 50ms;
-    user-select: none;
     border: 2px solid black;
 }
 .button{
@@ -59,7 +57,6 @@ nav{
 }
 .button span{
     font-size:40px;
-    font-family: "Overpass Mono";
     font-weight: bold;
     position: relative;
     top: -5px;
@@ -94,11 +91,9 @@ div{
     padding-right: 5px;
     max-width: 80%;
     margin: auto;
-    font-family: "Overpass Mono";
     font-weight: bold;
     border-bottom-left-radius: 9px;
     border-bottom-right-radius: 9px;
-    user-select: none;
 }
 .input-box input{
     width: 500px;
@@ -108,7 +103,6 @@ div{
     font-size: 35px;
     background-color: transparent;
     color: white;
-    font-family: "Overpass Mono";
     padding-top: 2px;
     padding-bottom: 2px;
     text-transform: uppercase;
@@ -122,7 +116,6 @@ div{
 #progress span{
     color: #777777;
     display: inline-block;
-    font-family: "Overpass Mono";
     font-size: 14px;
     min-width: 20px;
     padding-bottom: 1px;
@@ -137,7 +130,6 @@ div{
 }
 #pointct span{
     margin: auto;
-    font-family: "Overpass Mono";
     font-weight: bold;
     color: gold;
 }
@@ -147,10 +139,8 @@ div{
     padding: .5%;
     margin-top: 7px;
     border-radius: 4.5px;
-    font-family: "Overpass Mono";
     padding-bottom: 0px;
     border: 2px solid black;
-    user-select: none;
 }
 #wright{
     margin-left: 20%;
@@ -182,4 +172,13 @@ div{
 #progress span.incorrect{
     color: red;
     font-weight: bold;
+}
+main .ans{
+    font-size: 16px;
+    color: #999999;
+}
+main .ans i{
+    color: #ff9999;
+    font-weight: bold;
+    font-style: normal;
 }

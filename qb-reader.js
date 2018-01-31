@@ -118,7 +118,7 @@ function display(array){
 }
 
 function displayBonus(array,rd){
-    var prev = $("main span").length;
+    var prev = $("main span").length+((rd-1)*2);
     var theStr = "";
     var duration = array.length*400 + 5000;
     for(var i=0; i<array.length; i++){
@@ -132,7 +132,7 @@ function displayBonus(array,rd){
     $("body").append("<div class='button bon' id=\"stopbutton\">"
         +"<span>ANSWER</span></div>");
     $(".button").click(function() {
-        $("span").stop(true, true);
+        $("span").finish();
         $(this).off('click').empty().append("<input type='text'/>").addClass("input-box").removeClass("button");
         tossupTimeout = setTimeout(function(){checkBonusAns()},10000);
         $(".input-box input").keyup(function(){
@@ -161,6 +161,48 @@ function fillProgress(){
     }
     var pct = 86/tossups.length + "%";
     $("#progress span:not(span:first-of-type)").css('width',pct);
+}
+
+function checkBonusAns(part){
+    var ans;
+    $('.input-box input').prop('disabled',true);
+    if(part==1){
+        ans="<span class='ans'><i>ANSWER:</i> "+tossups[ON_TOSSUP].bonus.partOne.answer+"</span>";
+    }else if(part==2){
+        ans="<span class='ans'><i>ANSWER:</i> "+tossups[ON_TOSSUP].bonus.partTwo.answer+"</span>";
+    }else{
+        ans="<span class='ans'><i>ANSWER:</i> "+tossups[ON_TOSSUP].bonus.partThree.answer+"</span>";
+    }
+    $('.input-box').append(ans+"<div id='wright' data-truth='true'>I was<br/>correct.</div>"
+        +"<div id='wrong' data-truth='false'>I was<br/>incorrect.</div>");
+    $('.input-box span').toggle().slideDown(400);
+    $('.input-box div').toggle().delay(500).slideDown(400).click(function(){
+        if($(this).attr("data-truth")=="true"){
+            POINTS+=10;
+            $("#pointct span").html(parseInt(POINTS));
+        }else{
+            if(part==1){
+                for(var i=0; i<tossups[ON_TOSSUP].bonus.partOne.source.length; i++){
+                    WRONG.push(tossups[ON_TOSSUP].bonus.partOne.source[i]);
+                }
+            }else if(part==2){
+                for(var i=0; i<tossups[ON_TOSSUP].bonus.partTwo.source.length; i++){
+                    WRONG.push(tossups[ON_TOSSUP].bonus.partTwo.source[i]);
+                }
+            }else{
+                for(var i=0; i<tossups[ON_TOSSUP].bonus.partThree.source.length; i++){
+                    WRONG.push(tossups[ON_TOSSUP].bonus.partThree.source[i]);
+                }
+            }
+        }
+        $("main").append(ans+"<br/><br/>");
+        if(part<3){
+            bonus(part+1);
+        }else{
+            ON_TOSSUP++;
+            tossup();
+        }
+    });
 }
 
 function checkTossupAns(){
@@ -221,9 +263,11 @@ function bonus(part){
             $("main").empty();
             displayBonus(process(cut(tossups[ON_TOSSUP].bonus.prelude+"<br/><br/>A. "+tossups[ON_TOSSUP].bonus.partOne.questionText),true),1);
         },2000);
+    }else if(part==2){
+        displayBonus(process(cut("B. "+tossups[ON_TOSSUP].bonus.partTwo.questionText),true),2);
+    }else{
+        displayBonus(process(cut("C. "+tossups[ON_TOSSUP].bonus.partThree.questionText),true),3);
     }
 }
 
-function checkBonusAns(part){
 
-}
