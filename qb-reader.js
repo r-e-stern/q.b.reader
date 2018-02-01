@@ -334,13 +334,43 @@ function bonus(part){
 }
 
 function displaySources(){
-    sort(WRONG);
+    WRONG = sort(WRONG);
+    $("main").empty().append("You missed material from: <div id='movie'><h1>Movies</h1></div>" +
+        "<div id='TOS'><h1>The Original Series</h1></div>" +
+        "<div id='TNG'><h1>The Next Generation</h1></div>" +
+        "<div id='DS9'><h1>Deep Space Nine</h1></div>" +
+        "<div id='VOY'><h1>Voyager</h1></div>" +
+        "<div id='ENT'><h1>Enterprise</h1></div>" +
+        "<div id='DIS'><h1>Discovery</h1></div>");
+
 }
 
 function sort(array){
-    var temparray = array;
-    for(var i=0; i<array.length; i++){
-
-    }
+    var original = array;
+    original.sort(function(a,b){
+        return value(a)-value(b);
+    });
+    return original;
 }
 
+function value(object){
+    var value = 0;
+    if(object.type=="movie"){
+        for(var i=0; i<MOVIE_ORDER.length; i++){
+            if(object.title==MOVIE_ORDER[i]){
+                value+=(i+1);
+                break;
+            }
+        }
+    }else{
+        for(var i=0; i<SERIES_ORDER.length; i++){
+            if(object.series==SERIES_ORDER[i]){
+                value+=((i+1)*1000);
+                break;
+            }
+        }
+        value+=object.season*100;
+        value+=object.episode;
+    }
+    return value;
+}
