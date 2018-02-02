@@ -334,6 +334,7 @@ function bonus(part){
 }
 
 function displaySources(){
+    $("body > div").remove();
     WRONG = sort(WRONG);
     $("main").empty().append("You missed material from: <div id='movie'><h1>Movies</h1></div>" +
         "<div id='TOS'><h1>The Original Series</h1></div>" +
@@ -342,7 +343,18 @@ function displaySources(){
         "<div id='VOY'><h1>Voyager</h1></div>" +
         "<div id='ENT'><h1>Enterprise</h1></div>" +
         "<div id='DIS'><h1>Discovery</h1></div>");
-
+    for(var i=0; i<WRONG.length; i++){
+        if(WRONG[i].type=="movie"){
+            $("#movie").append("<p>"+WRONG[i].title+"</p>");
+        }else{
+            $("#"+WRONG[i].series).append("<p>"+WRONG[i].title+"<b> (S<strong>"+WRONG[i].season+"</strong>E<strong>"+WRONG[i].episode+"</strong>)</b></p>");
+        }
+    }
+    for(var i=0; i<$("main div").length; i++){
+        if($("main div:nth-child("+(i+1)+")").children().length==1){
+            $("main div:nth-child("+(i+1)+")").toggle();
+        }
+    }
 }
 
 function sort(array){
@@ -350,7 +362,26 @@ function sort(array){
     original.sort(function(a,b){
         return value(a)-value(b);
     });
-    return original;
+    return weed(original);
+}
+
+function weed(array){
+    var newarray = [];
+    var same = false;
+    for(var i=0; i<array.length; i++){
+        same = false;
+        if(i==0){
+            newarray.push(array[i]);
+        }else{
+            for(var j=0; j<newarray.length; j++){
+                if(value(newarray[j])==value(array[i])){
+                    same = true;
+                }
+            }
+            if(!same){newarray.push(array[i])}
+        }
+    }
+    return newarray;
 }
 
 function value(object){
