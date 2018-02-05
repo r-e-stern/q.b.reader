@@ -1,5 +1,5 @@
 *{
-    font-family: "Overpass Mono";
+    font-family: "Overpass Mono", monospace;
     user-select: none;
 }
 main{
@@ -63,7 +63,7 @@ nav{
 
 }
 .bon span{
-    top: 0px;
+    top: 0;
 }
 .button img{
     height: 40px;
@@ -139,7 +139,7 @@ div{
     padding: .5%;
     margin-top: 7px;
     border-radius: 4.5px;
-    padding-bottom: 0px;
+    padding-bottom: 0;
     border: 2px solid black;
 }
 #wright{
@@ -184,15 +184,19 @@ main .ans i{
 }
 main h1{
     color:#40ff80;
-    margin: 0px;
+    margin: 0;
     padding-bottom: 7.5px;
     font-size: 32.5px;
 }
 main p{
     font-size: 20px;
-    margin: 0px;
+    margin: 0;
 }
 main b{
     color: #999999;
     font-size: 14px;
+}
+.input-box input:focus{
+    color: #8dffec;
+    border-color: #8dffec;
 }

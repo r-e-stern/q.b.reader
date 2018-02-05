@@ -8,7 +8,7 @@ var MOVIE_ORDER = ["The Motion Picture", "The Wrath of Khan", "The Search for Sp
                     "The Final Frontier", "The Undiscovered Country", "Generations", "First Contact", "Insurrection",
                     "Nemesis", "Star Trek (2009)", "Into Darkness", "Beyond"];
 
-function Question(q,a,s){
+function Question(q,a){
     this.questionText = q;
     this.answer = a;
     this.source =[];
@@ -51,6 +51,12 @@ $(document).ready(function(){
     $(document).keyup(function(){
         if(event.code == "Enter"){
             $(".button").click();
+        }else if(event.code == "KeyI"){
+            $("#wrong").click();
+        }else if(event.code == "KeyC"){
+            $("#wright").click();
+        }else if(event.code == "KeyB"){
+            $("nav").click();
         }
     });
     $("nav").click(function(){
@@ -136,6 +142,7 @@ function display(array){
                 clearTimeout(tossupTimeout);
             }
         });
+        $(".input-box input").focus();
     });
 }
 
@@ -187,6 +194,7 @@ function displayBonus(array,rd){
         clearTimeout(buzzTimeout);
         $("span").finish();
         $(this).off('click').empty().append("<input type='text'/>").addClass("input-box").removeClass("button");
+        $(".input-box input").focus();
         tossupTimeout = setTimeout(function(){
             checkBonusAns();
             if($(".input-box input").val()==""){
