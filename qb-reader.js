@@ -355,7 +355,12 @@ function displaySources(){
         if(WRONG[i].type=="movie"){
             $("#movie").append("<p>"+WRONG[i].title+"</p>");
         }else{
-            $("#"+WRONG[i].series).append("<p>"+WRONG[i].title+"<b> (S<strong>"+WRONG[i].season+"</strong>E<strong>"+WRONG[i].episode+"</strong>)</b></p>");
+            if((WRONG[i].series != WRONG[i-1].series)
+                || (i==0)
+                || ((WRONG[i].series == WRONG[i-1].series)&&(WRONG[i].season != WRONG[i-1].season))){
+                $("#"+WRONG[i].series).append("<h2>Season "+WRONG[i].season+"</h2>");
+            }
+            $("#"+WRONG[i].series).append("<p>"+WRONG[i].title+"<b> (S"+WRONG[i].season+"E"+WRONG[i].episode+")</b></p>");
         }
     }
     for(var i=0; i<$("main div").length; i++){

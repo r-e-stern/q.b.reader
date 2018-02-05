@@ -200,3 +200,7 @@ main b{
     color: #8dffec;
     border-color: #8dffec;
 }
+main h2{
+    font-size: 22.5px;
+    margin-top: 5px;
+}
