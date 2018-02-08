@@ -387,4 +387,3 @@ tossups[22].bonus.partThree.source.push(new Episode("The Measure of A Man","TNG"
 tossups[23].bonus.partOne.source.push(new Episode("Doctor Bashir, I Presume","DS9",5,16));
 tossups[23].bonus.partTwo.source.push(new Episode("Author, Author","VOY",7,20));
 tossups[23].bonus.partThree.source.push(new Episode("Author, Author","VOY",7,20));
-
