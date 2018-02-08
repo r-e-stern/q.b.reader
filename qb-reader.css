@@ -204,3 +204,29 @@ main h2{
     font-size: 22.5px;
     margin-top: 5px;
 }
+.control{
+    color: #ffe040;
+    border: 2px solid #ffe040;
+    padding: 3px;
+    border-radius: 10px;
+    display: inline-block;
+    min-width: 25px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+td{
+    width: 50%;
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 2px solid transparent;
+    color: #dddddd;
+}
+table{
+    width: 100%;
+}
+fieldset{
+    font-size: 20px;
+    margin: 20px 40px 20px 40px;
+    border: 2px solid #777777;
+    color: #777777;
+}
