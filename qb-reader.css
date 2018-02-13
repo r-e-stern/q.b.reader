@@ -202,7 +202,12 @@ main b{
 }
 main h2{
     font-size: 22.5px;
-    margin-top: 5px;
+    margin-top: 7.5px;
+    margin-bottom: 0px;
+    color: #40ffe0
+}
+main p:last-of-type{
+    margin-bottom: 17.5px;
 }
 .control{
     color: #ffe040;
